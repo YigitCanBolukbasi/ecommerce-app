@@ -1,19 +1,17 @@
 import React from "react";
-import Card from "../components/Card/Card";
-import Carousel from "../components/Carousel/Carousel";
+import CarouselComponent from "../components/Carousel/Carousel";
 import Footer from "../components/Footer/Footer";
 import MenuNavbar from "../components/Menu/MenuNavbar";
 import Navbar from "../components/Navbar/Navbar";
+import Products from "../components/Products/Products";
 
 function Home() {
   return (
     <div>
       <Navbar />
       <MenuNavbar />
-      <Carousel />
-      <div>
-        <Card />
-      </div>
+      <CarouselComponent />
+      <Products />
       <Footer />
     </div>
   );

@@ -1,21 +1,16 @@
-const checkbox = theme => ({
+const checkbox = (theme) => ({
   MuiCheckbox: {
     styleOverrides: {
       root: {
-        color: theme.palette.primary.main,
-        checked: {
-          color: theme.palette.primary.main
-        }
-      }
-    }
+        checked: {},
+      },
+    },
   },
   MuiSvgIcon: {
     styleOverrides: {
-      root: {
-        fontSize: 16
-      }
-    }
-  }
+      root: {},
+    },
+  },
 });
 
 export default checkbox;

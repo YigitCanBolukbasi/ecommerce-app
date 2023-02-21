@@ -1,24 +1,14 @@
-const formLabel = theme => ({
+const formLabel = (theme) => ({
   MuiFormLabel: {
     styleOverrides: {
-      root: {
-        color: '#878787',
-        fontWeight: theme.typography.fontWeightRegular,
-        fontFamily: theme.typography.fontFamily,
-        lineHeight: '1.5rem'
-      }
-    }
+      root: {},
+    },
   },
   MuiFormControlLabel: {
     styleOverrides: {
-      root: {
-        color: '#878787',
-        fontWeight: theme.typography.fontWeightRegular,
-        fontFamily: theme.typography.fontFamily,
-        lineHeight: '1.5rem'
-      }
-    }
-  }
+      root: {},
+    },
+  },
 });
 
 export default formLabel;
