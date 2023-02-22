@@ -13,21 +13,30 @@ export const productsSlice = createSlice({
   name: "products",
   initialState: {
     items: [],
+    allProducts: [],
     categories: [],
-    favoriteItems: [4, 5, 6],
+    favoriteItems: [],
     isLoading: false,
     error: null,
+    liked: false,
   },
   reducers: {
     addFavoriteProduct: (state, action) => {
-      const id = action.payload;
-      const index = state.favoriteItems.indexOf(id);
+      const id = action.payload.id;
+      const favoriteData = action.payload;
+      const favoriteItems = state.favoriteItems?.map((x) => x.id);
+      const index = favoriteItems.indexOf(id);
 
       if (index !== -1) {
-        state.favoriteItems = state.favoriteItems.filter((x) => x !== id);
+        state.favoriteItems = state.favoriteItems.filter((x) => x.id !== id);
       } else {
-        state.favoriteItems.push(id);
+        state.favoriteItems.push(favoriteData);
       }
+    },
+    filterFavoriteProduct: (state, action) => {
+      state.liked = !state.liked;
+      state.items =
+        state.liked === true ? state.favoriteItems : state.allProducts;
     },
   },
   extraReducers: {
@@ -36,6 +45,7 @@ export const productsSlice = createSlice({
     },
     [getProductsAsync.fulfilled]: (state, action) => {
       state.items = action.payload;
+      state.allProducts = action.payload;
       state.isLoading = false;
     },
     [getProductsAsync.rejected]: (state, action) => {
@@ -44,5 +54,6 @@ export const productsSlice = createSlice({
     },
   },
 });
-export const { addFavoriteProduct } = productsSlice.actions;
+export const { addFavoriteProduct, filterFavoriteProduct } =
+  productsSlice.actions;
 export default productsSlice.reducer;

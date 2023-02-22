@@ -15,38 +15,29 @@ import { addFavoriteProduct } from "../../Redux/products/productsSlice";
 const ProductCard = ({ products }) => {
   const dispatch = useDispatch();
   const favoriteİtems = useSelector((state) => state.products.favoriteItems);
-  const [favorite, setFavorite] = React.useState(false);
-  const [favoriteId, setFavoriteId] = React.useState([]);
 
   const StyledIconButton = styled(IconButton)(({ theme }) => ({
     position: "absolute",
     top: "10px",
     right: "10px",
-    background: favorite ? "red" : "white",
     "&:hover": {
-      background: favorite ? "white" : "red",
       boxShadow: "none",
       border: "none",
       color: "#32363A",
     },
   }));
 
-  React.useEffect(() => {
-    console.log("favorite", favoriteİtems);
-  }, [favoriteİtems]);
-
-  const StyledIcon = styled(FavoriteBorderIcon)(({ theme }) => ({}));
-
   const CardContainer = styled(Card)(({ theme }) => ({
     position: "relative",
   }));
 
-  const handleFavoriteButton = () => {
-    setFavorite(!favorite);
+  const handleFavoriteButton = (i) => {
+    dispatch(addFavoriteProduct(i));
   };
-  const handleForwardCard = (id) => {
-    setFavoriteId((prewState) => [...prewState, id]);
-    console.log(favoriteId);
+
+  const isFavorite = (id) => {
+    const mapFavorite = favoriteİtems.map((x) => x.id);
+    mapFavorite.includes(id);
   };
 
   return (
@@ -61,10 +52,14 @@ const ProductCard = ({ products }) => {
               image={i.imageUrl}
             />
             <CardContent>
-              <StyledIconButton
-                onClick={() => dispatch(addFavoriteProduct(i.id))}
-              >
-                <StyledIcon />
+              <StyledIconButton onClick={() => handleFavoriteButton(i)}>
+                <FavoriteBorderIcon
+                  sx={
+                    isFavorite(i.id)
+                      ? { background: "red", borderRadius: "20px" }
+                      : { background: "white", borderRadius: "20px" }
+                  }
+                />
               </StyledIconButton>
               <Typography gutterBottom variant="h5" component="div">
                 {i.name}
@@ -72,11 +67,11 @@ const ProductCard = ({ products }) => {
               <Typography gutterBottom variant="h5" component="div">
                 {i.price}
               </Typography>
-              {/* <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.secondary">
                 {i.description.length > 65
                   ? `${i.description.substring(0, 65)}...`
                   : i.description}
-              </Typography> */}
+              </Typography>
             </CardContent>
             <CardActions>
               <Typography variant="body2" color="text.secondary">
