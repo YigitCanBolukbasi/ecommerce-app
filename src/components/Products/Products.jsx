@@ -1,10 +1,5 @@
-import {
-  Button,
-  Container,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Button, Container, Stack, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import React, { useEffect } from "react";
 import ProductCard from "../Card/ProductCard";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,6 +16,15 @@ function Products() {
   const items = useSelector((state) => state.products.items);
   const favoriteProducts = useSelector((state) => state.products.favoriteItems);
   const handleLiked = useSelector((state) => state.products.liked);
+
+  const StyledButton = styled(Button)(({ theme }) => ({
+    "&:hover": {
+      boxShadow: "none",
+      border: "none",
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.primary.main,
+    },
+  }));
 
   useEffect(() => {
     dispatch(getProductsAsync());
@@ -47,9 +51,9 @@ function Products() {
               }
             />
             <Typography>{favoriteProducts.length} product</Typography>
-            <Button onClick={() => dispatch(filterFavoriteProduct())}>
+            <StyledButton onClick={() => dispatch(filterFavoriteProduct())}>
               {handleLiked ? "Show All" : "Show Liked"}
-            </Button>
+            </StyledButton>
           </Stack>
         </Box>
       </Stack>
@@ -60,7 +64,10 @@ function Products() {
         </Grid>
       </Box>
       <Stack alignItems="center" justifyContent="center" margin="50px">
-        <Button>More...</Button>
+        {!handleLiked && <Button>More...</Button>}
+        {handleLiked && favoriteProducts.length < 1 && (
+          <Typography>you haven't liked anything yet</Typography>
+        )}
       </Stack>
     </Container>
   );

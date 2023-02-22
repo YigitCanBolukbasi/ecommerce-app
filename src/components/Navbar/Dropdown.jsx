@@ -26,12 +26,10 @@ const StyledMenu = styled((props) => (
 ))(({ theme }) => ({
   "& .MuiPaper-root": {
     borderRadius: 6,
+    background: "#00254F",
     marginTop: theme.spacing(1),
     minWidth: 180,
-    color:
-      theme.palette.mode === "light"
-        ? "rgb(55, 65, 81)"
-        : theme.palette.grey[300],
+    color: theme.palette.common.white,
     boxShadow:
       "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
     "& .MuiMenu-list": {
@@ -61,6 +59,12 @@ const ButtonDropDown = styled(Button)(({ theme }) => ({
   borderRadius: 0,
   color: "#32363A",
   height: "100%",
+  "&:hover": {
+    boxShadow: "none",
+    border: "none",
+    color: "#32363A",
+    backgroundColor: "#F4F5F6",
+  },
 }));
 
 export default function CustomizedMenus() {
@@ -98,19 +102,23 @@ export default function CustomizedMenus() {
       >
         <MenuItem onClick={handleClose} disableRipple>
           <EditIcon />
+          Data
+        </MenuItem>
+        <MenuItem onClick={handleClose} disableRipple>
+          <FileCopyIcon />
           Edit
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
           <FileCopyIcon />
-          Duplicate
+          Category Name
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
           <FileCopyIcon />
-          Duplicate
+          Category Name
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
           <FileCopyIcon />
-          Duplicate
+          Category Name
         </MenuItem>
       </StyledMenu>
     </div>
