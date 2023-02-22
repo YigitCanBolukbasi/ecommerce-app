@@ -43,17 +43,7 @@ function Products() {
 
       <Box sx={{ width: "100%" }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          {items?.map((i) => (
-            <Grid item xs={3}>
-              <ProductCard
-                name={i.name}
-                desc={i.description}
-                url={i.imageUrl}
-                post={i.shippingMethod}
-                price={i.price}
-              />
-            </Grid>
-          ))}
+          <ProductCard products={items} />
         </Grid>
       </Box>
       <Stack alignItems="center" justifyContent="center" margin="50px">

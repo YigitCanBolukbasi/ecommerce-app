@@ -13,12 +13,21 @@ export const productsSlice = createSlice({
   name: "products",
   initialState: {
     items: [],
+    categories: [],
+    favoriteItems: [4, 5, 6],
     isLoading: false,
     error: null,
   },
   reducers: {
-    exemplaReducer: (state, action) => {
-      state.items.push(action.payload);
+    addFavoriteProduct: (state, action) => {
+      const id = action.payload;
+      const index = state.favoriteItems.indexOf(id);
+
+      if (index !== -1) {
+        state.favoriteItems = state.favoriteItems.filter((x) => x !== id);
+      } else {
+        state.favoriteItems.push(id);
+      }
     },
   },
   extraReducers: {
@@ -35,6 +44,5 @@ export const productsSlice = createSlice({
     },
   },
 });
-export const { addToDo, toggle, destroy, changeActiveFilter, clearCompleted } =
-  productsSlice.actions;
+export const { addFavoriteProduct } = productsSlice.actions;
 export default productsSlice.reducer;

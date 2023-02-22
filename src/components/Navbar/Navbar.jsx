@@ -25,9 +25,7 @@ const Navbar = () => {
     borderRadius: "4px",
     borderColor: theme.palette.common.black,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.black, 0.25),
-    },
+    "&:hover": {},
     marginRight: theme.spacing(2),
     marginLeft: 0,
     marginRight: 0,

@@ -104,14 +104,13 @@ export default function CustomizedMenus() {
           <FileCopyIcon />
           Duplicate
         </MenuItem>
-        <Divider sx={{ my: 0.5 }} />
         <MenuItem onClick={handleClose} disableRipple>
-          <ArchiveIcon />
-          Archive
+          <FileCopyIcon />
+          Duplicate
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <MoreHorizIcon />
-          More
+          <FileCopyIcon />
+          Duplicate
         </MenuItem>
       </StyledMenu>
     </div>
