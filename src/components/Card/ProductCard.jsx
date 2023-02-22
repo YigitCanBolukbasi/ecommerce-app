@@ -35,11 +35,6 @@ const ProductCard = ({ products }) => {
     dispatch(addFavoriteProduct(i));
   };
 
-  const isFavorite = (id) => {
-    const mapFavorite = favoriteİtems.map((x) => x.id);
-    mapFavorite.includes(id);
-  };
-
   return (
     <>
       {products?.map((i) => (
@@ -55,7 +50,7 @@ const ProductCard = ({ products }) => {
               <StyledIconButton onClick={() => handleFavoriteButton(i)}>
                 <FavoriteBorderIcon
                   sx={
-                    isFavorite(i.id)
+                    favoriteİtems.includes(i.id)
                       ? { background: "red", borderRadius: "20px" }
                       : { background: "white", borderRadius: "20px" }
                   }

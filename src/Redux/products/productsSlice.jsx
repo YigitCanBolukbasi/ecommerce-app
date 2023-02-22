@@ -23,20 +23,18 @@ export const productsSlice = createSlice({
   reducers: {
     addFavoriteProduct: (state, action) => {
       const id = action.payload.id;
-      const favoriteData = action.payload;
-      const favoriteItems = state.favoriteItems?.map((x) => x.id);
-      const index = favoriteItems.indexOf(id);
-
-      if (index !== -1) {
-        state.favoriteItems = state.favoriteItems.filter((x) => x.id !== id);
+      if (state.favoriteItems.includes(id)) {
+        state.favoriteItems = state.favoriteItems?.filter((x) => x !== id);
       } else {
-        state.favoriteItems.push(favoriteData);
+        state.favoriteItems.push(action.payload.id);
       }
     },
     filterFavoriteProduct: (state, action) => {
       state.liked = !state.liked;
       state.items =
-        state.liked === true ? state.favoriteItems : state.allProducts;
+        state.liked === true
+          ? state.allProducts.filter((x) => state.favoriteItems?.includes(x.id))
+          : state.allProducts;
     },
   },
   extraReducers: {
