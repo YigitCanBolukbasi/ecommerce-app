@@ -1,20 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Dropdown from "./Dropdown";
 import Button from "@mui/material/Button";
 import InputBase from "@mui/material/InputBase";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import Logo from "../../assets/svg/Logo.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import { Stack } from "@mui/material";
@@ -26,7 +19,6 @@ const Navbar = () => {
     borderColor: theme.palette.common.black,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {},
-    marginRight: theme.spacing(2),
     marginLeft: 0,
     marginRight: 0,
     [theme.breakpoints.up("sm")]: {
