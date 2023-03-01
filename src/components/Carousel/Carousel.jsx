@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
+import { styled } from "@mui/material/styles";
 import Item from "./Item";
 import CarouselFirs from "../../assets/jpgCarousel/CarouselFirs.png";
 import CarouselSec from "../../assets/jpgCarousel/CarouselSec.png";
@@ -25,12 +26,21 @@ const CarouselComponent = () => {
       src: CarouselFour,
     },
   ];
+
+  const StyledCarouesl = styled(Carousel)(({ theme }) => ({
+    "& .MuiPaper-root ": {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  }));
+
   return (
-    <Carousel>
+    <StyledCarouesl>
       {items.map((item, i) => (
         <Item key={i} item={item} />
       ))}
-    </Carousel>
+    </StyledCarouesl>
   );
 };
 
