@@ -24,16 +24,20 @@ const Dropdown = ({ submenus, dropdown, depthLevel, anchorEl }) => {
         "aria-labelledby": "basic-button",
       }}
     >
-      <Stack direction="row">
+      <Stack padding={4} direction="row">
         <Box>
-          <Typography>Header:</Typography>
+          <Typography marginLeft={2} fontWeight="bold">
+            Header
+          </Typography>
           {submenus.map((submenu, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <MenuItems items={submenu} key={index} depthLevel={depthLevel} />
           ))}
         </Box>
         <Box>
-          <Typography>Header:</Typography>
+          <Typography marginLeft={2} fontWeight="bold">
+            Header
+          </Typography>
           {submenus.map((submenu, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <MenuItems items={submenu} key={index} depthLevel={depthLevel} />
