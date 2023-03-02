@@ -19,10 +19,17 @@ const ProductCard = ({ products }) => {
     position: "absolute",
     top: "10px",
     right: "10px",
+    borderRadius: "15px",
+    width: "30px",
+    height: "30px",
+    background: "white",
     "&:hover": {
       boxShadow: "none",
       border: "none",
       color: "#32363A",
+      width: "30px",
+      height: "30px",
+      background: "white",
     },
   }));
 
@@ -50,8 +57,11 @@ const ProductCard = ({ products }) => {
                 <FavoriteBorderIcon
                   sx={
                     favoriteİtems.includes(i.id)
-                      ? { background: "red", borderRadius: "20px" }
-                      : { background: "white", borderRadius: "20px" }
+                      ? {
+                          background: "red",
+                          borderRadius: "15px",
+                        }
+                      : { background: "white", borderRadius: "15px" }
                   }
                 />
               </StyledIconButton>
