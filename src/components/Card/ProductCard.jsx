@@ -35,6 +35,41 @@ const ProductCard = ({ products }) => {
 
   const CardContainer = styled(Card)(({ theme }) => ({
     position: "relative",
+    padding: "8px",
+    borderRadius: "5px",
+  }));
+
+  const NameTypography = styled(Typography)(({ theme }) => ({
+    fontFamily: "Roboto",
+    fontWeight: "600",
+    fontSize: "16px",
+    lineHeight: "18.75px",
+    color: "#00254F",
+  }));
+
+  const PriceTypography = styled(Typography)(({ theme }) => ({
+    fontFamily: "Roboto",
+    fontWeight: "700",
+    fontSize: "14px",
+    lineHeight: "16.41px",
+    color: "#00254F",
+    backgroundColor: "#E6EEF8",
+  }));
+
+  const DescriptionTypography = styled(Typography)(({ theme }) => ({
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    fontSize: "12px",
+    lineHeight: "14.06px",
+    color: "#00254F",
+  }));
+
+  const ShippingTypography = styled(Typography)(({ theme }) => ({
+    fontFamily: "Inter",
+    fontWeight: "400",
+    fontSize: "10px",
+    lineHeight: "12.1px",
+    color: "#000000",
   }));
 
   const handleFavoriteButton = (i) => {
@@ -65,22 +100,22 @@ const ProductCard = ({ products }) => {
                   }
                 />
               </StyledIconButton>
-              <Typography gutterBottom variant="h5" component="div">
+              <NameTypography gutterBottom variant="h5" component="div">
                 {i.name}
-              </Typography>
-              <Typography gutterBottom variant="h5" component="div">
+              </NameTypography>
+              <PriceTypography gutterBottom variant="h5" component="div">
                 {i.price}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
+              </PriceTypography>
+              <DescriptionTypography variant="body2" color="text.secondary">
                 {i.description.length > 65
                   ? `${i.description.substring(0, 65)}...`
                   : i.description}
-              </Typography>
+              </DescriptionTypography>
             </CardContent>
             <CardActions>
-              <Typography variant="body2" color="text.secondary">
+              <ShippingTypography variant="body2" color="text.secondary">
                 {i.shippingMethod}
-              </Typography>
+              </ShippingTypography>
             </CardActions>
           </CardContainer>
         </Grid>
