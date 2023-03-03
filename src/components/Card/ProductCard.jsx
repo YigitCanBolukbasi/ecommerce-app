@@ -12,6 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { addFavoriteProduct } from "../../Redux/products/productsSlice";
+import { Link } from "@mui/material";
 
 const ProductCard = ({ products }) => {
   const dispatch = useDispatch();
@@ -82,50 +83,52 @@ const ProductCard = ({ products }) => {
     <>
       {products?.map((i) => (
         <Grid item xs={3}>
-          <CardContainer sx={{ maxWidth: 345 }}>
-            <Tooltip title="Please Click To Go Link">
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                height="140"
-                image={i.imageUrl}
-              />
-            </Tooltip>
-            <CardContent>
-              <Tooltip title="Add favorite">
-                <StyledIconButton onClick={() => handleFavoriteButton(i)}>
-                  <FavoriteBorderIcon
-                    sx={
-                      favoriteİtems.includes(i.id)
-                        ? {
-                            background: "red",
-                            borderRadius: "15px",
-                          }
-                        : { background: "white", borderRadius: "15px" }
-                    }
-                  />
-                </StyledIconButton>
+          <Link underline="none" href="https://www.google.com">
+            <CardContainer sx={{ maxWidth: 345 }}>
+              <Tooltip title="Please Click To Go Link">
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="140"
+                  image={i.imageUrl}
+                />
               </Tooltip>
-              <NameTypography gutterBottom variant="h5" component="div">
-                {i.name}
-              </NameTypography>
-              <PriceTypography gutterBottom variant="h5" component="div">
-                {i.price}
-              </PriceTypography>
-              <MouseOverPopover desc={i.description}>
-                <DescriptionTypography variant="body2" color="text.secondary">
-                  {i.description.length > 65
-                    ? `${i.description.substring(0, 65)}...`
-                    : i.description}
-                </DescriptionTypography>
-              </MouseOverPopover>
-            </CardContent>
-            <CardActions>
-              <ShippingTypography variant="body2" color="text.secondary">
-                {i.shippingMethod}
-              </ShippingTypography>
-            </CardActions>
-          </CardContainer>
+              <CardContent>
+                <Tooltip title="Add favorite">
+                  <StyledIconButton onClick={() => handleFavoriteButton(i)}>
+                    <FavoriteBorderIcon
+                      sx={
+                        favoriteİtems.includes(i.id)
+                          ? {
+                              background: "red",
+                              borderRadius: "15px",
+                            }
+                          : { background: "white", borderRadius: "15px" }
+                      }
+                    />
+                  </StyledIconButton>
+                </Tooltip>
+                <NameTypography gutterBottom variant="h5" component="div">
+                  {i.name}
+                </NameTypography>
+                <PriceTypography gutterBottom variant="h5" component="div">
+                  {i.price}
+                </PriceTypography>
+                <MouseOverPopover desc={i.description}>
+                  <DescriptionTypography variant="body2" color="text.secondary">
+                    {i.description.length > 65
+                      ? `${i.description.substring(0, 65)}...`
+                      : i.description}
+                  </DescriptionTypography>
+                </MouseOverPopover>
+              </CardContent>
+              <CardActions>
+                <ShippingTypography variant="body2" color="text.secondary">
+                  {i.shippingMethod}
+                </ShippingTypography>
+              </CardActions>
+            </CardContainer>
+          </Link>
         </Grid>
       ))}
     </>
