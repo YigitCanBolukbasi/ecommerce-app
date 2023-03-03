@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import MouseOverPopover from "../components/MauseOverPopover";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
@@ -111,11 +112,13 @@ const ProductCard = ({ products }) => {
               <PriceTypography gutterBottom variant="h5" component="div">
                 {i.price}
               </PriceTypography>
-              <DescriptionTypography variant="body2" color="text.secondary">
-                {i.description.length > 65
-                  ? `${i.description.substring(0, 65)}...`
-                  : i.description}
-              </DescriptionTypography>
+              <MouseOverPopover desc={i.description}>
+                <DescriptionTypography variant="body2" color="text.secondary">
+                  {i.description.length > 65
+                    ? `${i.description.substring(0, 65)}...`
+                    : i.description}
+                </DescriptionTypography>
+              </MouseOverPopover>
             </CardContent>
             <CardActions>
               <ShippingTypography variant="body2" color="text.secondary">
