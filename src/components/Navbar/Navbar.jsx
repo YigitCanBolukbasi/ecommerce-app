@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
+import { useSelector, useDispatch } from "react-redux";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Dropdown from "./Dropdown";
@@ -11,8 +12,10 @@ import InputBase from "@mui/material/InputBase";
 import Logo from "../../assets/svg/Logo.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import { Stack } from "@mui/material";
+import { searchProduct } from "../../Redux/products/productsSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: "4px",
@@ -66,6 +69,10 @@ const Navbar = () => {
     width: "110px",
   }));
 
+  const handleSearch = (e) => {
+    dispatch(searchProduct(e));
+  };
+
   return (
     <AppBar color="common" position="static">
       <Container maxWidth="xl">
@@ -103,6 +110,7 @@ const Navbar = () => {
                       <SearchIcon />
                     </SearchIconWrapper>
                     <StyledInputBase
+                      onChange={(e) => handleSearch(e.target.value)}
                       placeholder="Search…"
                       inputProps={{ "aria-label": "search" }}
                     />

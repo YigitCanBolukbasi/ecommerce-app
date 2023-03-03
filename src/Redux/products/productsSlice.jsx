@@ -36,6 +36,15 @@ export const productsSlice = createSlice({
           ? state.allProducts.filter((x) => state.favoriteItems?.includes(x.id))
           : state.allProducts;
     },
+    searchProduct: (state, action) => {
+      if (action.payload !== "") {
+        state.items = state.allProducts.filter((x) =>
+          x.name.toLowerCase().includes(action.payload.toLowerCase())
+        );
+      } else {
+        state.items = state.allProducts;
+      }
+    },
   },
   extraReducers: {
     [getProductsAsync.pending]: (state, action) => {
@@ -52,6 +61,6 @@ export const productsSlice = createSlice({
     },
   },
 });
-export const { addFavoriteProduct, filterFavoriteProduct } =
+export const { addFavoriteProduct, searchProduct, filterFavoriteProduct } =
   productsSlice.actions;
 export default productsSlice.reducer;

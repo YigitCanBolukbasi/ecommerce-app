@@ -7,12 +7,14 @@ import {
   Typography,
 } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
+import { useSelector, useDispatch } from "react-redux";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import SearchIcon from "@mui/icons-material/Search";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+import { searchProduct } from "../../Redux/products/productsSlice";
 
 const data = [
   { title: "Title", subtitle: "Subtitle" },
@@ -47,6 +49,11 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 
 function Footer() {
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    dispatch(searchProduct(e));
+  };
   return (
     <Container>
       <Box sx={{ flexGrow: 1 }}>
@@ -73,10 +80,11 @@ function Footer() {
                     </SearchIconWrapper>
                   </Box>
                   <StyledInputBase
+                    onChange={(e) => handleSearch(e.target.value)}
                     placeholder="Search…"
                     inputProps={{ "aria-label": "search" }}
                   />
-                  <StyledButton>Sign Up</StyledButton>
+                  <StyledButton>Search</StyledButton>
                 </Stack>
               </Search>
             </Grid>
