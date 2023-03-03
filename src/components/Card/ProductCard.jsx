@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import MouseOverPopover from "../components/MauseOverPopover";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { addFavoriteProduct } from "../../Redux/products/productsSlice";
 import { Link } from "@mui/material";
@@ -83,52 +83,55 @@ const ProductCard = ({ products }) => {
     <>
       {products?.map((i) => (
         <Grid item xs={3}>
-          <Link underline="none" href="https://www.google.com">
-            <CardContainer sx={{ maxWidth: 345 }}>
-              <Tooltip title="Please Click To Go Link">
-                <CardMedia
-                  component="img"
-                  alt="green iguana"
-                  height="140"
-                  image={i.imageUrl}
+          <CardContainer sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="140"
+              image={i.imageUrl}
+            />
+            <Tooltip title="Add Favorite">
+              <StyledIconButton onClick={() => handleFavoriteButton(i)}>
+                <FavoriteBorderIcon
+                  sx={
+                    favoriteİtems.includes(i.id)
+                      ? {
+                          background: "red",
+                          borderRadius: "15px",
+                        }
+                      : { background: "white", borderRadius: "15px" }
+                  }
                 />
-              </Tooltip>
-              <CardContent>
-                <Tooltip title="Add favorite">
-                  <StyledIconButton onClick={() => handleFavoriteButton(i)}>
-                    <FavoriteBorderIcon
-                      sx={
-                        favoriteİtems.includes(i.id)
-                          ? {
-                              background: "red",
-                              borderRadius: "15px",
-                            }
-                          : { background: "white", borderRadius: "15px" }
-                      }
-                    />
-                  </StyledIconButton>
-                </Tooltip>
-                <NameTypography gutterBottom variant="h5" component="div">
-                  {i.name}
-                </NameTypography>
-                <PriceTypography gutterBottom variant="h5" component="div">
-                  {i.price}
-                </PriceTypography>
-                <MouseOverPopover desc={i.description}>
-                  <DescriptionTypography variant="body2" color="text.secondary">
-                    {i.description.length > 65
-                      ? `${i.description.substring(0, 65)}...`
-                      : i.description}
-                  </DescriptionTypography>
-                </MouseOverPopover>
-              </CardContent>
-              <CardActions>
-                <ShippingTypography variant="body2" color="text.secondary">
-                  {i.shippingMethod}
-                </ShippingTypography>
-              </CardActions>
-            </CardContainer>
-          </Link>
+              </StyledIconButton>
+            </Tooltip>
+            <Tooltip title="Please Click To Go Link">
+              <Link underline="none" href="https://www.google.com">
+                <CardContent>
+                  <NameTypography gutterBottom variant="h5" component="div">
+                    {i.name}
+                  </NameTypography>
+                  <PriceTypography gutterBottom variant="h5" component="div">
+                    {i.price}
+                  </PriceTypography>
+                  <MouseOverPopover desc={i.description}>
+                    <DescriptionTypography
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {i.description.length > 65
+                        ? `${i.description.substring(0, 65)}...`
+                        : i.description}
+                    </DescriptionTypography>
+                  </MouseOverPopover>
+                </CardContent>
+                <CardActions>
+                  <ShippingTypography variant="body2" color="text.secondary">
+                    {i.shippingMethod}
+                  </ShippingTypography>
+                </CardActions>
+              </Link>
+            </Tooltip>
+          </CardContainer>
         </Grid>
       ))}
     </>
