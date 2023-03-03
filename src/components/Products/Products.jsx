@@ -1,10 +1,12 @@
 import { Button, Container, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../Card/ProductCard";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
+import Alert from "../components/Alert";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import {
   getProductsAsync,
@@ -12,6 +14,7 @@ import {
 } from "../../Redux/products/productsSlice";
 
 function Products() {
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const items = useSelector((state) => state.products.items);
   const favoriteProducts = useSelector((state) => state.products.favoriteItems);
@@ -51,9 +54,15 @@ function Products() {
               }
             />
             <Typography>{favoriteProducts.length} product</Typography>
-            <StyledButton onClick={() => dispatch(filterFavoriteProduct())}>
-              {handleLiked ? "Show All" : "Show Liked"}
-            </StyledButton>
+            <Tooltip
+              title={
+                favoriteProducts.length > 0 ? "Show Favorites" : "Empty List"
+              }
+            >
+              <StyledButton onClick={() => dispatch(filterFavoriteProduct())}>
+                {handleLiked ? "Show All" : "Show Liked"}
+              </StyledButton>
+            </Tooltip>
           </Stack>
         </Box>
       </Stack>
@@ -64,7 +73,16 @@ function Products() {
         </Grid>
       </Box>
       <Stack alignItems="center" justifyContent="center" margin="50px">
-        {!handleLiked && <Button>More...</Button>}
+        <Alert open={open} setOpen={setOpen} />
+        {!handleLiked && (
+          <Button
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            More...
+          </Button>
+        )}
         {handleLiked && favoriteProducts.length < 1 && (
           <Typography>you haven't liked anything yet</Typography>
         )}

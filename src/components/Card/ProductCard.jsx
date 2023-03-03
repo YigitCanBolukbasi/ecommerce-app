@@ -7,6 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { addFavoriteProduct } from "../../Redux/products/productsSlice";
@@ -81,25 +82,29 @@ const ProductCard = ({ products }) => {
       {products?.map((i) => (
         <Grid item xs={3}>
           <CardContainer sx={{ maxWidth: 345 }}>
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="140"
-              image={i.imageUrl}
-            />
+            <Tooltip title="Please Click To Go Link">
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                height="140"
+                image={i.imageUrl}
+              />
+            </Tooltip>
             <CardContent>
-              <StyledIconButton onClick={() => handleFavoriteButton(i)}>
-                <FavoriteBorderIcon
-                  sx={
-                    favoriteİtems.includes(i.id)
-                      ? {
-                          background: "red",
-                          borderRadius: "15px",
-                        }
-                      : { background: "white", borderRadius: "15px" }
-                  }
-                />
-              </StyledIconButton>
+              <Tooltip title="Add favorite">
+                <StyledIconButton onClick={() => handleFavoriteButton(i)}>
+                  <FavoriteBorderIcon
+                    sx={
+                      favoriteİtems.includes(i.id)
+                        ? {
+                            background: "red",
+                            borderRadius: "15px",
+                          }
+                        : { background: "white", borderRadius: "15px" }
+                    }
+                  />
+                </StyledIconButton>
+              </Tooltip>
               <NameTypography gutterBottom variant="h5" component="div">
                 {i.name}
               </NameTypography>
