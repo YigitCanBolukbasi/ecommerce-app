@@ -37,13 +37,13 @@ export default function MouseOverPopover({ children, desc }) {
           horizontal: "left",
         }}
         transformOrigin={{
-          vertical: "top",
+          vertical: "bottom",
           horizontal: "left",
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography sx={{ p: 1 }}>{desc}</Typography>
+        <Typography sx={{ p: 1, width: "300px" }}>{desc}</Typography>
       </Popover>
     </div>
   );
