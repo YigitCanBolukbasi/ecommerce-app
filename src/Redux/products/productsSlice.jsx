@@ -38,7 +38,7 @@ export const productsSlice = createSlice({
     },
     searchProduct: (state, action) => {
       if (action.payload !== "") {
-        state.items = state.allProducts.filter((x) =>
+        state.items = state.items.filter((x) =>
           x.name.toLowerCase().includes(action.payload.toLowerCase())
         );
       } else {
