@@ -7,8 +7,11 @@ import React from "react";
 import nameData from "./nameData";
 import MenuItems from "./MenuItems";
 
-const MenuNavbarStyled = styled(List)(() => ({
+const MenuNavbarStyled = styled(List)(({ theme }) => ({
   margin: "0 120px 0 120px",
+  [theme.breakpoints.down("lg")]: {
+    margin: 0,
+  },
   ".css-1oqqzyl-MuiContainer-root": {
     paddingLeft: 0,
     maxWidth: "100%",

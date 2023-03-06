@@ -10,6 +10,8 @@ import MenuItems from "./MenuItems";
 const Dropdown = ({ submenus, dropdown, depthLevel, anchorEl }) => {
   depthLevel += 1;
 
+  const StyledImg = styled("img")(({ theme }) => ({}));
+
   return (
     <Menu
       sx={{
@@ -43,7 +45,13 @@ const Dropdown = ({ submenus, dropdown, depthLevel, anchorEl }) => {
             <MenuItems items={submenu} key={index} depthLevel={depthLevel} />
           ))}
         </Box>
-        <img src={image1} alt="image1" />
+        <StyledImg
+          sx={{
+            display: { xs: "none", lg: "flex", md: "none" },
+          }}
+          src={image1}
+          alt="image1"
+        />
       </Stack>
     </Menu>
   );

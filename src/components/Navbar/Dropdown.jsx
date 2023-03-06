@@ -62,6 +62,9 @@ const ButtonDropDown = styled(Button)(({ theme }) => ({
     color: "#32363A",
     backgroundColor: "#F4F5F6",
   },
+  [theme.breakpoints.down("sm")]: {
+    dipslay: "none",
+  },
 }));
 
 export default function CustomizedMenus() {
@@ -83,6 +86,9 @@ export default function CustomizedMenus() {
         aria-expanded={open ? "true" : undefined}
         variant="contained"
         disableElevation
+        sx={{
+          display: { xs: "none" },
+        }}
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >

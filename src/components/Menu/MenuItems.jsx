@@ -111,10 +111,11 @@ const ButtonDropdown = styled(Button)(({ theme }) => ({
   },
   [theme.breakpoints.up("xl")]: {},
   [theme.breakpoints.down("xl")]: {},
-  [theme.breakpoints.down("lg")]: {},
+  [theme.breakpoints.down("lg")]: {
+    fontSize: "8px",
+  },
   [theme.breakpoints.down("md")]: {},
   [theme.breakpoints.down("sm")]: {},
-  [theme.breakpoints.down("xs")]: {},
 }));
 
 const MenuText = styled(Typography)(({ theme }) => ({

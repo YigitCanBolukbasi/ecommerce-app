@@ -25,6 +25,9 @@ const data = [
 const Search = styled("div")(({ theme }) => ({
   background: "white",
   width: "80%",
+  [theme.breakpoints.up("xs")]: {
+    width: "100%",
+  },
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({}));
@@ -58,7 +61,7 @@ function Footer() {
     <Container>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} paddingLeft={5}>
-          <Grid xs={6} padding={5}>
+          <Grid xs={12} sm={12} md={6} lg={6} xl={6} padding={5}>
             <Grid xs={12}>
               <Typography variant="h4">NTTDATA</Typography>
               <Typography variant="caption">
@@ -89,9 +92,9 @@ function Footer() {
               </Search>
             </Grid>
           </Grid>
-          <Grid xs={6} padding={5}>
+          <Grid md={6} lg={6} xl={6} padding={5}>
             <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={2}>
+              <Grid container spacing={5} lg={12} xl={12}>
                 {data.map((x) => (
                   <Grid xs={4}>
                     <Box>

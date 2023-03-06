@@ -82,7 +82,7 @@ const ProductCard = ({ products }) => {
   return (
     <>
       {products?.map((i) => (
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={3} md={3} lg={3} xl={3}>
           <CardContainer sx={{ maxWidth: 345 }}>
             <CardMedia
               component="img"

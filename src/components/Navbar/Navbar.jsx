@@ -24,6 +24,15 @@ const Navbar = () => {
     "&:hover": {},
     marginLeft: 0,
     marginRight: 0,
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+    },
+    [theme.breakpoints.up("md")]: {
+      width: "auto",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "auto",
+    },
     [theme.breakpoints.up("sm")]: {
       width: "auto",
     },
@@ -78,7 +87,13 @@ const Navbar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Stack
-            direction="row"
+            direction={{
+              xs: "column",
+              sm: "row",
+              lg: "row",
+              md: "row",
+              xl: "row",
+            }}
             justifyContent="flex-start"
             alignItems="center"
             width="100%"
@@ -91,7 +106,7 @@ const Navbar = () => {
                 href="/"
                 sx={{
                   mr: 2,
-                  display: { xs: "none", md: "flex" },
+                  display: { md: "flex" },
                   fontFamily: "monospace",
                   fontWeight: 700,
                   letterSpacing: ".3rem",
@@ -102,28 +117,30 @@ const Navbar = () => {
                 <img src={Logo} alt="CQLogo" height="25" width="170" />
               </Typography>
             </LogoBox>
-            <SearchBox>
-              <Stack direction="row" alignItems="center">
-                <Search>
-                  <Stack direction="row">
-                    <SearchIconWrapper>
-                      <SearchIcon />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                      onChange={(e) => handleSearch(e.target.value)}
-                      placeholder="Search…"
-                      inputProps={{ "aria-label": "search" }}
-                    />
-                    <Dropdown />
-                  </Stack>
-                </Search>
-              </Stack>
-            </SearchBox>
-            <Box>
-              <ButtonSecondSearch variant="contained">
-                <SearchIcon />
-              </ButtonSecondSearch>
-            </Box>
+            <Stack direction="row">
+              <SearchBox>
+                <Stack direction="row" alignItems="center">
+                  <Search>
+                    <Stack direction="row">
+                      <SearchIconWrapper>
+                        <SearchIcon />
+                      </SearchIconWrapper>
+                      <StyledInputBase
+                        onChange={(e) => handleSearch(e.target.value)}
+                        placeholder="Search…"
+                        inputProps={{ "aria-label": "search" }}
+                      />
+                      <Dropdown />
+                    </Stack>
+                  </Search>
+                </Stack>
+              </SearchBox>
+              <Box>
+                <ButtonSecondSearch variant="contained">
+                  <SearchIcon />
+                </ButtonSecondSearch>
+              </Box>
+            </Stack>
           </Stack>
         </Toolbar>
       </Container>

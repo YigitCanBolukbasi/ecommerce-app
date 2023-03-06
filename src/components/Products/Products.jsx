@@ -40,6 +40,7 @@ function Products() {
         marginTop="20px"
         direction="row"
         justifyContent="space-between"
+        alignItems="center"
       >
         <Box>
           <Typography>Products</Typography>
