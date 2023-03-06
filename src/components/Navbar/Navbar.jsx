@@ -72,6 +72,10 @@ const Navbar = () => {
     borderRadius: "4px",
   }));
 
+  const StyledAppBar = styled(AppBar)(({ theme }) => ({
+    padding: "15px 0 15px 0",
+  }));
+
   const ButtonSecondSearch = styled(Button)(({ theme }) => ({
     height: "40px",
     marginLeft: "12px",
@@ -83,7 +87,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar color="common" position="static">
+    <StyledAppBar color="common" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Stack
@@ -144,7 +148,7 @@ const Navbar = () => {
           </Stack>
         </Toolbar>
       </Container>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 export default Navbar;

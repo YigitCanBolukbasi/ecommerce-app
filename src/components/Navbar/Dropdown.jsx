@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import EditIcon from "@mui/icons-material/Edit";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { IconButton } from "@mui/material";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -62,12 +63,15 @@ const ButtonDropDown = styled(Button)(({ theme }) => ({
     color: "#32363A",
     backgroundColor: "#F4F5F6",
   },
-  [theme.breakpoints.down("sm")]: {
-    dipslay: "none",
-  },
+}));
+
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  color: "white",
+  fontSize: "14px",
 }));
 
 export default function CustomizedMenus() {
+  const [dropDownData, setDropDownData] = useState("Data");
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -87,12 +91,12 @@ export default function CustomizedMenus() {
         variant="contained"
         disableElevation
         sx={{
-          display: { xs: "none" },
+          display: { xs: "none", sm: "flex" },
         }}
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        Categories
+        {dropDownData}
       </ButtonDropDown>
       <StyledMenu
         id="demo-customized-menu"
@@ -104,24 +108,44 @@ export default function CustomizedMenus() {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose} disableRipple>
-          <EditIcon />
-          Data
+          <StyledIconButton
+            onClick={(e) => setDropDownData(e.target.outerText)}
+          >
+            <EditIcon />
+            Data
+          </StyledIconButton>
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <FileCopyIcon />
-          Edit
+          <StyledIconButton
+            onClick={(e) => setDropDownData(e.target.outerText)}
+          >
+            <FileCopyIcon />
+            Edit
+          </StyledIconButton>
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <FileCopyIcon />
-          Category Name
+          <StyledIconButton
+            onClick={(e) => setDropDownData(e.target.outerText)}
+          >
+            <FileCopyIcon />
+            Category Name
+          </StyledIconButton>
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <FileCopyIcon />
-          Category Name
+          <StyledIconButton
+            onClick={(e) => setDropDownData(e.target.outerText)}
+          >
+            <FileCopyIcon />
+            Category Name
+          </StyledIconButton>
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <FileCopyIcon />
-          Category Name
+          <StyledIconButton
+            onClick={(e) => setDropDownData(e.target.outerText)}
+          >
+            <FileCopyIcon />
+            Category Name
+          </StyledIconButton>
         </MenuItem>
       </StyledMenu>
     </div>

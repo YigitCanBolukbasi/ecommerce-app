@@ -25,7 +25,7 @@ const data = [
 const Search = styled("div")(({ theme }) => ({
   background: "white",
   width: "80%",
-  [theme.breakpoints.up("xs")]: {
+  [theme.breakpoints.down("xs")]: {
     width: "100%",
   },
 }));
@@ -69,7 +69,7 @@ function Footer() {
               </Typography>
             </Grid>
             <Grid xs={8}>
-              <Typography>
+              <Typography sx={{ display: { xs: "none", md: "flex" } }}>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo,
                 tenetur quisquam.
               </Typography>
@@ -94,7 +94,13 @@ function Footer() {
           </Grid>
           <Grid md={6} lg={6} xl={6} padding={5}>
             <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={5} lg={12} xl={12}>
+              <Grid
+                container
+                spacing={5}
+                lg={12}
+                xl={12}
+                sx={{ display: { xs: "none", md: "flex" } }}
+              >
                 {data.map((x) => (
                   <Grid xs={4}>
                     <Box>
@@ -118,7 +124,6 @@ function Footer() {
         </Grid>
       </Box>
       <Divider />
-
       <Stack
         flexDirection="row"
         justifyContent="space-between"
@@ -128,7 +133,13 @@ function Footer() {
         <Typography marginLeft={9}>contact@gmail.com</Typography>
         <Typography>+902141234123</Typography>
         <Box>
-          <Stack paddingRight={5} flexDirection="row" gap={3} marginRight={12}>
+          <Stack
+            paddingRight={5}
+            flexDirection="row"
+            gap={3}
+            marginRight={12}
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
             <Twitter />
             <Facebook />
             <Instagram />
